@@ -1,7 +1,8 @@
 (function ($){
     
-    $.fn.badgerfishArray = function (json, path) {
+    $.badgerfishArray = function (json, path, options) {
         var first, count,
+            settings = $.extend({create: true}, options),
             type = $.type(path);
 
         if (type === 'string') {
@@ -31,6 +32,9 @@
                 }
             } else {
                 if ($.type(json[first]) === 'object') {
+                    bfRecurse (json[first], path);
+                } else if(json[first] === undefined && settings.create === true) {
+                    json[first] = {};
                     bfRecurse (json[first], path);
                 }
             }
