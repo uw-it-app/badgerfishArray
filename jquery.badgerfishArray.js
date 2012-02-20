@@ -40,4 +40,4 @@
         }
         bfRecurse(json, path);
     };
-})(jQuery);
+}(jQuery));
